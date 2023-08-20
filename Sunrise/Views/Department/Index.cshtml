@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Department>
+
+<h1 style=" background-color : mediumpurple ; color :white" class="alert alert-info text-center">Departments</h1>
+<br />
+<div class="d-flex justify-content-center">
+	<a asp-controller="Department" asp-action="GetCreateView" class="btn btn-outline-secondary btn-lg mb-1"> Create New Department </a>
+</div>
+<br />
+
+@if (Model.Count() > 0)
+{
+	<table class="table table-bordered table-striped table-hover">
+		<thead>
+			<tr>
+				<th>@Html.DisplayNameFor(e=>e.Id)</th>
+				<th>@Html.DisplayNameFor(e=>e.FullName)</th>
+				<th>@Html.DisplayNameFor(e=>e.Description)</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td> @item.Id</td>
+					<td> @item.FullName</td>
+					<td>@item.Description</td>
+					<td>
+						<a asp-controller="Department" asp-action="GetDetailsView" asp-route-id="@item.Id" class="btn btn-outline-secondary"><i class="bi bi-card-list"></i></a>
+						<a asp-controller="Department" asp-action="GetEditView" asp-route-id="@item.Id" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
+						<a asp-controller="Department" asp-action="GetDeleteView" asp-route-id="@item.Id" class="btn btn-outline-danger"><i class="bi bi-trash3-fill"></i></a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else
+{
+	<h1 class="alert-danger text-center">There is no date.</h1>
+}
+<br />
+<hr />

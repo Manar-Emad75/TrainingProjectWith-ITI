@@ -1,0 +1,72 @@
+﻿@model Employee
+<h1 style="background-color:mediumpurple;color:white" class="alert alert-warning text-center">Create Employee</h1>
+<div class="row">
+	<form class="col-md-6" method="post" asp-controller="Employees" asp-action="AddNew" enctype="multipart/form-data">
+
+		<div asp-validation-summary="All" class="text-danger"></div>
+
+		<div>
+			<label asp-for="FullName"></label>
+			<input type="text" asp-for="FullName" class="form-control" />
+			<span asp-validation-for="FullName" class="text-danger"></span>
+		</div>
+		<br /> 
+		<div>
+			<label asp-for="Position"></label>
+			<input type="text" asp-for="Position" class="form-control" />
+			<span asp-validation-for="Position" class="text-danger"></span>
+
+		</div>
+		<br />
+		<div>
+			<label asp-for="Salary"></label>
+			<input type="number" asp-for="Salary" class="form-control" />
+			<span asp-validation-for="Salary" class="text-danger"></span>
+
+		</div>
+		<br />
+		<div>
+			<label asp-for="BirthDate"></label>
+			<input asp-for="BirthDate" class="form-control" />
+			<span asp-validation-for="BirthDate" class="text-danger"></span>
+
+		</div>
+		<br />
+		<div>
+			<label asp-for="JoinDate"></label>
+			<input asp-for="JoinDate" class="form-control" />
+			<span asp-validation-for="JoinDate" class="text-danger"></span>
+
+		</div>
+		<br />
+		<div>
+			<label asp-for="ImageUrl"></label>
+			<input type="file" name="imageFormFile" id="imageFormFile" accept=".png,.jpg" onchange="AddImage()" class="form-control"/>
+			@*<span asp-validation-for="ImageUrl" class="text-danger"></span>*@
+		</div>
+		<br />
+		<div>
+			<label>Department</label>
+			<select asp-for="DepartmentId" asp-items="@ViewBag.DeptSelectItems" class="form-control">
+				<option selected disabled>Select...</option>
+			</select>
+		</div>
+		<br />
+		<div>
+			<button type="submit" class="btn btn-primary btn-lg mt-3">Add</button>
+			<a asp-controller="Employees" asp-action="GetIndexView" class="btn btn-primary btn-lg mt-3">Back</a>
+		</div>
+	</form>
+	<div class="col-4">
+		<img src="" id="empImage" style="object-fit:contain" />
+
+	</div>
+</div>
+
+@section Scripts{
+	<script>
+		function AddImage() {
+			document.getElementById('empImage').src = window.URL.createObjectURL(document.getElementById('imageFormFile').files[0]);
+		}
+	</script>
+		}

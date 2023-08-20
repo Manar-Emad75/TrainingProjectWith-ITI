@@ -1,0 +1,53 @@
+﻿
+@model IEnumerable<Employee>
+
+<h1 style=" background-color : mediumpurple ; color :white" class="alert alert-info text-center">Employees</h1>
+<br />
+<div class="d-flex justify-content-center">
+    <a asp-controller="Employees" asp-action="GetCreateView" class="btn btn-outline-secondary btn-lg mb-1"> Add New Employee </a>
+</div>
+<br />
+@if (Model.Count() > 0)
+{
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(e=>e.Id)</th>
+                <th>@Html.DisplayNameFor(e=>e.FullName)</th>
+                <th>@Html.DisplayNameFor(e=>e.Position)</th>
+                <th>@Html.DisplayNameFor(e=>e.Salary)</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> @item.Id</td>
+                    <td> @item.FullName</td>
+                    <td>@item.Position</td>
+                    <td> @item.Salary</td>
+                    <td>
+                        <a asp-controller="Employees" asp-action="GetDetailsView" asp-route-id="@item.Id" class="btn btn-outline-secondary"><i class="bi bi-card-list"></i></a>
+                        <a asp-controller="Employees" asp-action="GetEditView" asp-route-id="@item.Id" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
+                        <a asp-controller="Employees" asp-action="GetDeleteView" asp-route-id="@item.Id" class="btn btn-outline-danger"><i class="bi bi-trash3-fill"></i>  </a>
+                    </td>
+                </tr>
+            }
+       
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" style="text-align:right"><strong>Total</strong></td>
+                <td>@Model.Sum(e=>e.Salary)</td>
+
+            </tr>
+        </tfoot>
+    </table>
+}
+else
+{
+    <h1 class="alert-danger text-center">There is no date.</h1>
+}
+<br />
+<hr />

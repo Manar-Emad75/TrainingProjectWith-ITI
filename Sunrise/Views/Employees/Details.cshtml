@@ -1,0 +1,36 @@
+﻿@model Employee
+
+<h1 style=" background-color : mediumpurple ; color : white" class="alert alert-info text-center">@Model.FullName Details</h1>
+<br />
+<br />
+
+<dl class="row">
+	<dt class="col-2">@Html.DisplayNameFor(e=>e.Id)</dt>
+	<dd class="col-10">@Html.DisplayFor(e=>e.Id)</dd>
+
+	<dt class="col-2">@Html.DisplayNameFor(e=>e.FullName)</dt>
+	<dd class="col-10">@Html.DisplayFor(e=>e.FullName)</dd>
+
+	<dt class="col-2">@Html.DisplayNameFor(e=>e.Position)</dt>
+	<dd class="col-10">@Html.DisplayFor(e=>e.Position)</dd>
+
+	<dt class="col-2">@Html.DisplayNameFor(e=>e.Salary)</dt>
+	<dd class="col-10">@Html.DisplayFor(e=>e.Salary)</dd>
+
+	<dt class="col-2">@Html.DisplayNameFor(e=>e.BirthDate)</dt>
+	<dd class="col-10">@Html.DisplayFor(e=>e.BirthDate)</dd>
+
+	<dt class="col-2">@Html.DisplayNameFor(e=>e.DepartmentId)</dt>
+	<dd class="col-10">@Html.DisplayFor(e=>e.Department.FullName)</dd>
+</dl>
+
+
+<div class="col-2 float-end  " style="position:absolute ;top:14%;right:1150px">
+	@*   <label asp-for="ImageURL"></label>*@
+	<img src="@Model.ImageUrl" style="width:50%;aspect-ratio:1/1">
+</div>
+
+
+<a asp-controller="Employees" asp-action="GetIndexView" class="btn btn-primary mt-3">Back to list</a>
+
+	

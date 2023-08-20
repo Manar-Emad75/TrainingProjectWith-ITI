@@ -1,0 +1,36 @@
+﻿@model Department
+
+<h1 style=" background-color : mediumpurple ; color : white" class="alert alert-info text-center">@Model.FullName Details</h1>
+<br />
+<br />
+
+<dl class="row">
+	<dt class="col-2">@Html.DisplayNameFor(e=>e.Id)</dt>
+	<dd class="col-10">@Html.DisplayFor(e=>e.Id)</dd>
+
+	<dt class="col-2">@Html.DisplayNameFor(e=>e.FullName)</dt>
+	<dd class="col-10">@Html.DisplayFor(e=>e.FullName)</dd>
+
+	<dt class="col-2">@Html.DisplayNameFor(e=>e.Description)</dt>
+	<dd class="col-10">@Html.DisplayFor(e=>e.Description)</dd>
+
+</dl>
+
+<h3 style="color:darkorchid">Department Employees</h3>
+@if (Model.Employees.Count() > 0)
+{
+	<ul>
+		@foreach (var item in Model.Employees)
+		{
+			<li>@item.FullName ( @item.Position )</li>
+		}
+	</ul>
+}
+else
+{
+	<h5 class="alert alert-danger">There is no employee in this department</h5>
+}
+
+
+
+<a asp-controller="Department" asp-action="GetIndexView" class="btn btn-secondary mt-3">Back</a>
