@@ -25,14 +25,14 @@
 	<dt class="col-2">@Html.DisplayNameFor(e=>e.DepartmentId)</dt>
 	<dd class="col-10">@Html.DisplayFor(e=>e.Department.FullName)</dd> 
 </dl>
-<div class="col-6">
+<div class="col-6" style="position:absolute ;top:20%;right:450px">
 	@* <label asp-for="ImageUrl"></label>*@
-	<img src="@Model.ImageUrl" style="width:50%;aspect-ratio:1/1" />
+	<img src="@Model.ImageUrl" style="object-fit:contain;width:100%;height:250px;" />
 </div>
 
 <form method="post" asp-controller="Employees" asp-action="DeleteCurrent">
     <input type="hidden" asp-for="Id"/>
 	<button type="submit" class="btn btn-outline-danger">Delete</button>
+<a asp-controller="Employees" asp-action="GetIndexView" class="btn btn-outline-danger">Back</a>
 </form>
 
-<a asp-controller="Employees" asp-action="GetIndexView" class="btn btn-outline-danger mt-3">Back</a>

@@ -57,16 +57,33 @@
 			<a asp-controller="Employees" asp-action="GetIndexView" class="btn btn-primary btn-lg mt-3">Back</a>
 		</div>
 	</form>
-	<div class="col-4">
-		<img src="" id="empImage" style="object-fit:contain" />
+	<div class="col-4 offset-md-1" style="position:absolute ;top:20%;right:370px">
+		<img src="" id="empImage" style="object-fit:contain;width:100%;height:250px;display:none" />
 
 	</div>
+
 </div>
 
-@section Scripts{
+@*@section Scripts{
 	<script>
 		function AddImage() {
 			document.getElementById('empImage').src = window.URL.createObjectURL(document.getElementById('imageFormFile').files[0]);
 		}
 	</script>
+		}*@
+
+@section Scripts{
+	<script>
+		function AddImage() {
+			const imageFile = document.getElementById('imageFormFile').files[0];
+			const empImage = document.getElementById('empImage');
+
+			if (imageFile) {
+				empImage.src = window.URL.createObjectURL(imageFile);
+				empImage.style.display = 'block';
+			} else {
+				empImage.style.display = 'none';
+			}
 		}
+	</script>
+}
